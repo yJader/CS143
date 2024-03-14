@@ -10,17 +10,17 @@ progname=`basename $0`
 while [ -h "$PRG" ]; do
 	# Get the target of the symlink.  N.B.:  We assume that neither the
 	# link's value nor the pathname leading to it contains "-> ".
-	ls=`/bin/ls -ld "$PRG"`
-	link=`/usr/bin/expr "$ls" : '.*-> \(.*\)$'`
+	ls=`ls -ld "$PRG"`
+	link=`expr "$ls" : '.*-> \(.*\)$'`
 	# If the link is absolute, use it as is; otherwise, substitute it
 	# into the leafname part of $PRG.
 	case $link in 
 	    /*) PRG="$link";;
-	     *) PRG="`/usr/bin/dirname $PRG`/$link"
+	     *) PRG="`dirname $PRG`/$link"
 	esac
 done
 
-COOL_INST=`/usr/bin/dirname "$PRG"`/..
+COOL_INST=`dirname "$PRG"`/..
 
 # set environment for spim/xspim
 DEFAULT_TRAP_HANDLER=$COOL_INST/lib/trap.handler
