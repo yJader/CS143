@@ -1,7 +1,19 @@
 class Main inherits A2I {
+
     main() : Object {
         {
-            (new IO).out_string(i2a(a2i((new IO).in_string()) + 1)).concat("\n");
-            }
+            (new IO).out_string((i2a(fact(a2i((new IO).in_string()) + 1))).concat("\n"));
+    }};
+
+    fact(i: Int): Int {
+        let fact: Int <- 1 in {
+            while (not (i = 0)) loop
+                {
+                    fact <- fact * i;
+                    i <- i - 1; -- 赋值语句使用<-，而不是=
+                }
+            pool;
+            fact;
+        }
     };
 };
